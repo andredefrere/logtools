@@ -1,6 +1,7 @@
 from collections import OrderedDict
 from datetime import date, time, datetime, timedelta, MINYEAR, MAXYEAR
 import re
+import math
 
 class BaseFilter:
     """ Base Filter class. All filters need to derive from it and implement
@@ -187,6 +188,7 @@ class DateTimeFilter(BaseFilter):
         month = self.months.index(month)+1
         h, m, s = time.split(':')
         year = datetime.now().year
+        s = math.floor(float(s))
 
         dt = datetime(int(year), int(month), int(day), int(h), int(m), int(s))
         
